@@ -301,7 +301,7 @@ input[type="checkbox"] {
 </div>
 
 <script type="text/javascript">
-  const DEFAULT_LINE_COUNT = 50;
+  const DEFAULT_LINE_COUNT = 60;
   const PRE_COL_MAX_ITEM_E = 36;
   const PRE_COL_MAX_ITEM_M = 30;
 
@@ -547,14 +547,19 @@ input[type="checkbox"] {
       const len = getfib(i);
 
       ctx.strokeStyle = color;
-      if(i < 11) {
+      if(i < 10) {
+        ctx.lineWidth = 1;
+        if(i%2 == 1) ctx.strokeStyle = 'transparent';
+      } else if(10 == i) {
+        ctx.lineWidth = 1;
+      } else if(11 == i) {
         ctx.strokeStyle = 'transparent';
       } else if(12 == i) {
-        ctx.lineWidth = 5;
+        ctx.lineWidth = 4;
       } else if(13 == i) {
         ctx.strokeStyle = 'transparent';
       } else { // i=14
-        ctx.lineWidth = 10;
+        ctx.lineWidth = 8;
       }
 
       // 画扇形
@@ -649,7 +654,7 @@ input[type="checkbox"] {
     const canvas = document.querySelector('canvas');
     let a = document.createElement('a');
     const ln = document.getElementById("LineNum").value;
-    a.download = 'gkide-' + ln + 'f8-' + getYMDHMS();
+    a.download = 'gkide-' + ln + 'f9-' + getYMDHMS();
     a.href = canvas.toDataURL('image/png');
     a.dispatchEvent(new MouseEvent('click'));
   }
